@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+*.log
+
+# Generated/downloaded artifacts -- huge, regeneratable, not committed.
+# See README.md for how to rebuild each of these.
+backgrounds/
+dataset/
+model_training/images/
+model_training/*.pt
+runs/

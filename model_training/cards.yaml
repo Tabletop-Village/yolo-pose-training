@@ -1,0 +1,10 @@
+path: /home/user/yolo-pose-training/dataset
+train: train
+val: val
+
+kpt_shape: [4, 3]  # 4 keypoints (corners, in a fixed but not-semantically-named
+                   # order -- see create_images.py's overlay2 comment), each x,y,visibility
+
+nc: 1
+names:
+  0: card
