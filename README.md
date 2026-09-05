@@ -21,6 +21,12 @@ identification confidence went 70.3% -> 78.0% on that card as a result).
 The trained model is hosted on the HF Hub:
 [jackttv/card-scanner-yolo-pose](https://huggingface.co/jackttv/card-scanner-yolo-pose).
 
+Live detections on a real, messy multi-card photo (green quad = the
+model's 4 predicted corners, gray box = its bounding box) -- all 7 cards
+found and tightly outlined despite heavy rotation and overlap:
+
+![Sample detections on a real photo](docs/sample_detection.jpg)
+
 ## Pipeline
 
 1. **Backgrounds**: COCO train2017/val2017 (118,287 / 5,000 images),
@@ -45,6 +51,12 @@ The trained model is hosted on the HF Hub:
    [0, 1], which a naive unclamped implementation hit on roughly half the
    dataset (rotated cards routinely extend past the frame). One output
    image per background image: 118,287 train / 5,000 val.
+
+   A sample of labeled training examples (ground-truth keypoints drawn
+   in green), across several of COCO's very different background scenes:
+
+   ![Sample training examples](docs/training_samples.jpg)
+
 4. **Training** (`model_training/train.py`): `yolo26n-pose`, 100 epochs
    requested, `imgsz=640`. `optimizer=auto` picks ultralytics 8.4.137's new
    "Muon"/MuSGD optimizer, whose `muon_update()` crashes with a
