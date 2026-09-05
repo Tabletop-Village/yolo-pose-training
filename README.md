@@ -23,7 +23,12 @@ The trained model is hosted on the HF Hub:
 
 Live detections on a real, messy multi-card photo (green quad = the
 model's 4 predicted corners, gray box = its bounding box) -- all 7 cards
-found and tightly outlined despite heavy rotation and overlap:
+found and tightly outlined despite heavy rotation and overlap. Notably,
+one of them (the holographic "Krillin, Surprise Move") is a Dragon Ball
+Super card -- a game not represented anywhere in the 9-game training
+corpus -- and it's still detected and cleanly outlined just as well as
+the rest, since the model only ever learned "a rectangular card, at any
+rotation," not per-game visual conventions:
 
 ![Sample detections on a real photo](docs/sample_detection.jpg)
 
